@@ -63,7 +63,7 @@ class DucoBoxNode:
     mode: str | None = None
     flow_lvl_tgt: int | None = None
 
-    rh: int | None = None
+    rh: float | None = None
     iaq_rh: int | None = None
 
     co2: int | None = None
