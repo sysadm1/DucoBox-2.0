@@ -1,0 +1,21 @@
+{
+  "domain": "ducobox_api",
+  "name": "DucoBox API",
+  "codeowners": [
+    "@sysadm1"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/sysadm1/ducobox-api",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/sysadm1/ducobox-api/issues",
+  "requirements": [
+    "ducopy@git+https://github.com/sysadm1/ducopy.git@d556b5eda61dae985abd2089b8b6f97ab2eed852"
+  ],
+  "version": "1.0.0",
+  "zeroconf": [
+    {
+      "type": "_http._tcp.local.",
+      "name": "duco*"
+    }
+  ]
+}
