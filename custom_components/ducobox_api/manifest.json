@@ -5,9 +5,9 @@
     "@sysadm1"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/sysadm1/ducobox-api",
+  "documentation": "https://github.com/sysadm1/DucoBox-2.0",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/sysadm1/ducobox-api/issues",
+  "issue_tracker": "https://github.com/sysadm1/DucoBox-2.0/issues",
   "requirements": [
     "ducopy@git+https://github.com/sysadm1/ducopy.git@d556b5eda61dae985abd2089b8b6f97ab2eed852"
   ],

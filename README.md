@@ -1,8 +1,8 @@
 # DucoBox API
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
-[![GitHub Release](https://img.shields.io/github/release/sysadm1/ducobox-api.svg)](https://github.com/sysadm1/ducobox-api/releases)
-[![License](https://img.shields.io/github/license/sysadm1/ducobox-api.svg)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/release/sysadm1/DucoBox-2.0.svg)](https://github.com/sysadm1/DucoBox-2.0/releases)
+[![License](https://img.shields.io/github/license/sysadm1/DucoBox-2.0.svg)](LICENSE)
 
 A Home Assistant integration for DucoBox ventilation systems using the Connectivity Board 2.0 local REST API. This is the REST-only variant: it has no Modbus TCP dependency or control path. For a Modbus-only variant, see [ducobox-mb](https://github.com/sysadm1/ducobox-mb).
 
@@ -40,15 +40,15 @@ The following table lists entities supported by this integration for each node t
 | Outdoor Temperature, Wind Speed, Light Intensity (S/E/W)§ | Sensor | ✓ | | | | | | | | | | | | |
 | Rain§ | Binary Sensor | ✓ | | | | | | | | | | | | |
 
-† VOC support follows the same `Sensor.Voc`/`Sensor.IaqVoc` naming convention as the confirmed CO2/RH fields, and BSVOC/UCVOC/VLVVOC are all documented node types in DUCO's official `DucoDevice API` v2.5 spec (the local Connectivity Board API, more authoritative than the cloud spec for this integration), but no VOC-sensor hardware was available to verify any of this against a real board. If you have one and it doesn't show up, [open an issue](https://github.com/sysadm1/ducobox-api/issues) with its raw `/info/nodes` response.
+† VOC support follows the same `Sensor.Voc`/`Sensor.IaqVoc` naming convention as the confirmed CO2/RH fields, and BSVOC/UCVOC/VLVVOC are all documented node types in DUCO's official `DucoDevice API` v2.5 spec (the local Connectivity Board API, more authoritative than the cloud spec for this integration), but no VOC-sensor hardware was available to verify any of this against a real board. If you have one and it doesn't show up, [open an issue](https://github.com/sysadm1/DucoBox-2.0/issues) with its raw `/info/nodes` response.
 
 ‡ Heat-recovery-only values (e.g. DucoBox Energy). They read as unknown on models without heat recovery, such as the Focus this integration is primarily verified against. Any writable, ranged configuration value the box advertises for the bypass/supply-temperature targets documented for DucoBox Energy is already covered generically by the `number` entities described below, without needing a model-specific code path.
 
-§ Requires a DUCO weather station accessory attached to the box; read as unknown without one. Verified against DUCO's official API schema, but not against real weather-station hardware. If something looks off, [open an issue](https://github.com/sysadm1/ducobox-api/issues).
+§ Requires a DUCO weather station accessory attached to the box; read as unknown without one. Verified against DUCO's official API schema, but not against real weather-station hardware. If something looks off, [open an issue](https://github.com/sysadm1/DucoBox-2.0/issues).
 
 ¶ Four separate sensors, one per `Diag.SubSystems` entry: Ventilation, Filter, VentCool (ventilative cooling) and SunCtrl (sun control). Only Ventilation is populated on every tested box; the other three require that specific feature and read as unknown otherwise. Note that DUCO's cloud OpenAPI spec documents this list's key as `SubSystem`, but the Connectivity Board's real local response uses `Component` instead; this integration accepts either.
 
-DUCO's `DucoDevice API` v2.5 spec also documents dozens of other node types (IAV/EAV valve families, digital I/O, motor relays, Perilex, etc.) and zone-level endpoints (`/info/zones`, `/config/zones`) that this integration does not yet support. These weren't added speculatively since their exact data shape and behavior isn't confirmed against real hardware; [open an issue](https://github.com/sysadm1/ducobox-api/issues) if you have one of these and want support added.
+DUCO's `DucoDevice API` v2.5 spec also documents dozens of other node types (IAV/EAV valve families, digital I/O, motor relays, Perilex, etc.) and zone-level endpoints (`/info/zones`, `/config/zones`) that this integration does not yet support. These weren't added speculatively since their exact data shape and behavior isn't confirmed against real hardware; [open an issue](https://github.com/sysadm1/DucoBox-2.0/issues) if you have one of these and want support added.
 
 Ventilation control selects are created dynamically for each node whose API advertises the `SetVentilationState` action.
 
@@ -90,7 +90,7 @@ The maintainer's device reports a DucoBox FOCUS with Connectivity Board 2.0 Publ
 
 This integration talks to the Connectivity Board exclusively over its local REST API (via [DucoPy](https://github.com/sysadm1/ducopy)). It has no Modbus TCP code path, no Modbus options step, and no Modbus diagnostics — if you want ventilation control to keep working during a REST outage, or want a path with no dependency on the board's REST API key mechanism at all, use [ducobox-mb](https://github.com/sysadm1/ducobox-mb) instead (or run both side by side; they use separate domains).
 
-If you are missing a node or entity, feel free to [open an issue](https://github.com/sysadm1/ducobox-api/issues) or [create a pull request](https://github.com/sysadm1/ducobox-api/pulls).
+If you are missing a node or entity, feel free to [open an issue](https://github.com/sysadm1/DucoBox-2.0/issues) or [create a pull request](https://github.com/sysadm1/DucoBox-2.0/pulls).
 
 ## Installation
 
@@ -98,13 +98,13 @@ If you are missing a node or entity, feel free to [open an issue](https://github
 
 1. Open HACS in Home Assistant
 2. Click the three dots in the top right corner and select "Custom repositories"
-3. Add repository `https://github.com/sysadm1/ducobox-api` with category "Integration"
+3. Add repository `https://github.com/sysadm1/DucoBox-2.0` with category "Integration"
 4. Search for "DucoBox API", select the integration, and download it
 5. Restart Home Assistant
 
 ### Manual
 
-1. Download the latest release from [Releases](https://github.com/sysadm1/ducobox-api/releases)
+1. Download the latest release from [Releases](https://github.com/sysadm1/DucoBox-2.0/releases)
 2. Extract the `custom_components/ducobox_api` folder to your Home Assistant `custom_components` directory
 3. Restart Home Assistant
 
@@ -129,7 +129,7 @@ If you are missing a node or entity, feel free to [open an issue](https://github
 
 The integration has been updated against a DucoBox FOCUS reporting Connectivity Board 2.0 API 2.7. Feedback from Home Assistant use will help confirm entity behavior and broaden support for other devices.
 
-If you encounter an unsupported node or entity, or have an improvement in mind, feel free to [open an issue](https://github.com/sysadm1/ducobox-api/issues) or [create a pull request](https://github.com/sysadm1/ducobox-api/pulls).
+If you encounter an unsupported node or entity, or have an improvement in mind, feel free to [open an issue](https://github.com/sysadm1/DucoBox-2.0/issues) or [create a pull request](https://github.com/sysadm1/DucoBox-2.0/pulls).
 
 ## License
 

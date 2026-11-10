@@ -1,5 +1,5 @@
 {
-    "name": "sysadm1/ducobox-api",
+    "name": "sysadm1/DucoBox-2.0",
     "image": "mcr.microsoft.com/devcontainers/python:3.13",
     "postCreateCommand": "scripts/setup",
     "forwardPorts": [
